@@ -1,3 +1,4 @@
+import axios from "axios";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Addbook from './components/Addbook';
@@ -12,7 +13,7 @@ function App() {
       < Header />
         <div className='container'>
         <Routes>
-          <Route path="/" element={ <Booklist />} />
+          <Route path="/books" element={ <Booklist />} />
           <Route path="/addbook" element={<Addbook />} />
           <Route path="/book"  element={<Addbook />}/>
           <Route path="/addbook/:id"  element={<Addbook />}/>
