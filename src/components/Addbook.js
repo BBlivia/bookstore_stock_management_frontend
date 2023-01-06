@@ -1,4 +1,36 @@
+import React, {useState, useEffect} from 'react'
+import BookService from '../services/BookService';
+import {Link, useNavigate} from "react-router-dom";
+
 export default function Addbook(){
+
+    //function to collect and store entered inputs
+
+
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const [price, setPrice] = useState();
+    const [edition, setEdition] = useState();
+
+    const navigate = useNavigate();
+
+    const bookData = {title, author, price, edition};
+    console.log(bookData);
+
+    //saving book and go to home page
+    function saveBook(e){
+        e.preventDefault();
+        if(bookData.title !== "" && bookData.author !== "" && bookData.price !== 0 && bookData.edition !== 0){
+
+            BookService.saveBook(bookData)
+        .then(res=>navigate("/books"))
+        .catch(e=> console.log(e));
+        }else{
+            alert("Please fill in all fields")
+        }
+        
+    }
+
     return(<div>
         <div className='container mt-5'>
             <div className='row'>
@@ -7,23 +39,33 @@ export default function Addbook(){
                     <div className='card-body'>
                         <form>
                             <div className='form-group mb-2'>
+
                                 <input className='form-control' 
+                                value={title}
+                                onChange={(e) =>setTitle(e.target.value)}
                                 type="text" placeholder='Enter Title' />
                             </div>
                             <div className='form-group mb-2'>
                                 <input className='form-control' 
+                                value={author}
+                                onChange={(e)=> setAuthor(e.target.value)}
                                 type="text" placeholder='Enter Author' />
                             </div>
                             <div className='form-group mb-2'>
+                    
                                 <input className='form-control' 
-                                type="email" placeholder='Enter Price' />
+                                value={price}
+                                setPrice={(e)=>setPrice(e.target.value)}
+                                type="number" placeholder='Enter Price' />
                             </div>
                             <div className='form-group mb-2'>
-                                <input className='form-control' 
-                                type="email" placeholder='Enter Edition' />
+                                <input  className='form-control' 
+                                value={edition}
+                                onChange={(e)=>setEdition(e.target.value)}
+                                type="number" placeholder='Enter Edition' />
                             </div>
-                            <button className='btn save-btn'>Save</button> {" "}
-                            <a className='btn delete-btn' href="">Cancel</a>
+                            <button onClick={(e)=>saveBook(e)} className='btn save-btn'>Save</button> {" "}
+                            <Link to={"/books"} className='btn delete-btn' href="">Cancel</Link>
                         </form>
                     </div>
                 </div>

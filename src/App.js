@@ -13,9 +13,9 @@ function App() {
       < Header />
         <div className='container'>
         <Routes>
-          <Route path="/books" element={ <Booklist />} />
-          <Route path="/addbook" element={<Addbook />} />
-          <Route path="/book"  element={<Addbook />}/>
+          <Route path="/" element={ <Booklist />} />
+          <Route path="/books" element={<Booklist />} />
+          <Route path="/addbook"  element={<Addbook />}/>
           <Route path="/addbook/:id"  element={<Addbook />}/>
         </Routes>
         </div>

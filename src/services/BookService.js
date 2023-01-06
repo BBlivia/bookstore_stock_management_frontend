@@ -11,6 +11,11 @@ class BookService{
     getAllBooks(){
         return axios.get(Base_Url );
     }
+
+    //Post request and saving book just entered
+    saveBook(bookData){
+        return axios.post(Base_Url, bookData)
+    }
 }
 
 
