@@ -55,7 +55,7 @@ export default function Addbook(){
                     
                                 <input className='form-control' 
                                 value={price}
-                                setPrice={(e)=>setPrice(e.target.value)}
+                                onChange={(e)=>setPrice(e.target.value)}
                                 type="number" placeholder='Enter Price' />
                             </div>
                             <div className='form-group mb-2'>
