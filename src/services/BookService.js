@@ -16,6 +16,10 @@ class BookService{
     saveBook(bookData){
         return axios.post(Base_Url, bookData)
     }
+
+    updateBook(id, bookData){
+        return axios.put(`Base_Url/ ${id}`, bookData)
+    }
 }
 
 

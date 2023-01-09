@@ -45,7 +45,7 @@ export default function Booklist(){
                 <td>{book.price}</td>
                 <td>{book.edition}</td>
                 <td>
-                    <a className="btn bg-primary btn-update">Update</a> {" "}
+                    <Link to={`/addbook/${book.id}`} className="btn bg-primary btn-update">Update</Link> {" "}
                     <a className="btn btn-danger btn-delete">Delete</a> 
                 </td>
             </tr>)}

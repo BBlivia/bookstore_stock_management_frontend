@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import BookService from '../services/BookService';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 export default function Addbook(){
 
@@ -13,6 +13,8 @@ export default function Addbook(){
     const [edition, setEdition] = useState();
 
     const navigate = useNavigate();
+
+    const {id} = useParams();
 
     const bookData = {title, author, price, edition};
     console.log(bookData);
