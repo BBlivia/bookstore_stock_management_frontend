@@ -20,6 +20,10 @@ class BookService{
     updateBook(id, bookData){
         return axios.put(`Base_Url/ ${id}`, bookData)
     }
+
+    getBookById(id){
+        return axios.get(`Base_Url/ ${id}`)
+    }
 }
 
 

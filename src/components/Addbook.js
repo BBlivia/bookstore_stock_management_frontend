@@ -33,11 +33,39 @@ export default function Addbook(){
         
     }
 
+    //updating book with id passed in 
+
+    function tile(){
+        if(id){
+            return "Update Book Details";
+        }else{
+            return "Add Book";
+        }
+    }
+
+    useEffect(()=>{
+        if(id){
+            BookService.getBookById(id)
+            .then(res=>{
+                setTitle(res.data.title);
+                setAuthor(res.data.author);
+                setPrice(res.data.price);
+                setEdition(res.data.edition)
+
+            })
+            .catch(e => console.log(e));
+        }
+
+       
+    }, []);
+
+
+
     return(<div>
         <div className='container mt-5'>
             <div className='row'>
                 <div className='card col-md-6 offset-md-3'>
-                    <h2 className='text-center'>Add Book</h2>
+                    <h2 className='text-center'>{tile()}</h2>
                     <div className='card-body'>
                         <form>
                             <div className='form-group mb-2'>
