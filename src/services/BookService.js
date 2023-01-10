@@ -18,11 +18,15 @@ class BookService{
     }
 
     updateBook(id, bookData){
-        return axios.put(`Base_Url/ ${id}`, bookData)
+        return axios.put(`${Base_Url}/ ${id}`, bookData)
     }
 
     getBookById(id){
-        return axios.get(`Base_Url/ ${id}`)
+        return axios.get(`${Base_Url}/ ${id}`, )
+    }
+
+    deleteBook(id){
+        return axios.delete(Base_Url + "/" +id)
     }
 }
 

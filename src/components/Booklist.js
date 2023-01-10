@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import  { useEffect, useState } from "react"
 import {Link} from "react-router-dom"
 import BookService from "../services/BookService";
 
@@ -18,6 +18,11 @@ export default function Booklist(){
         BookService.getAllBooks()
         .then(res=> {setBookArray(res.data); console.log(res) })
         .catch(e => console.log(e))
+    }
+
+    function deleteBook(e, id){
+        e.preventDefault()
+        BookService.deleteBook(id).then(getAllBooks()).catch(e => console.log(e));
     }
 
     return(
@@ -46,7 +51,7 @@ export default function Booklist(){
                 <td>{book.edition}</td>
                 <td>
                     <Link to={`/addbook/${book.id}`} className="btn bg-primary btn-update">Update</Link> {" "}
-                    <a className="btn btn-danger btn-delete">Delete</a> 
+                    <a  onClick={(e) => deleteBook(e, book.id)} className="btn btn-danger btn-delete">Delete</a> 
                 </td>
             </tr>)}
 

@@ -23,10 +23,17 @@ export default function Addbook(){
     function saveBook(e){
         e.preventDefault();
         if(bookData.title !== "" && bookData.author !== "" && bookData.price !== 0 && bookData.edition !== 0){
-
-            BookService.saveBook(bookData)
-        .then(res=>navigate("/books"))
-        .catch(e=> console.log(e));
+            if(id){
+                BookService.updateBook(id,bookData)
+                .then(res=>navigate("/books"))
+                .catch(e=> console.log(e));
+            }else{
+                
+                    BookService.saveBook(bookData)
+                    .then(res=>navigate("/books"))
+                    .catch(e=> console.log(e));
+        
+            }
         }else{
             alert("Please fill in all fields")
         }
@@ -71,6 +78,7 @@ export default function Addbook(){
                             <div className='form-group mb-2'>
 
                                 <input className='form-control' 
+                                
                                 value={title}
                                 onChange={(e) =>setTitle(e.target.value)}
                                 type="text" placeholder='Enter Title' />
